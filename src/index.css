@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --wall: #1c2530;
+  --wall-soft: #253040;
+  --mat: #f6f3ec;
+  --mat-dim: #e8e3d7;
+  --brass: #c1963f;
+  --brass-bright: #d9ae54;
+  --ink: #1c2530;
+  --text-soft: #aab3c0;
+  --danger: #b5533f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--wall);
+  color: var(--mat);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.navbar-brand h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0.3px;
+}
+
+.navbar-brand span {
+  color: var(--brass-bright);
+  font-size: 0.9rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navbar-user {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-brass {
+  background: var(--brass);
+  color: var(--ink);
+}
+
+.btn-brass:hover {
+  background: var(--brass-bright);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--mat);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline:hover {
+  border-color: var(--brass-bright);
+  color: var(--brass-bright);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(181, 83, 63, 0.5);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.btn-danger:hover {
+  background: rgba(181, 83, 63, 0.12);
+}
+
+/* ---------- Login page ---------- */
+
+.login-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-card {
+  background: var(--mat);
+  color: var(--ink);
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 36px;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.login-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.login-sub {
+  color: #6b6353;
+  font-size: 0.92rem;
+  margin-bottom: 26px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  color: #6b6353;
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--mat-dim);
+  border-radius: 3px;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--ink);
+}
+
+.field input:focus {
+  outline: 2px solid var(--brass);
+  outline-offset: 1px;
+}
+
+.login-error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+.login-card .btn {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.login-hint {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #8a8272;
+  text-align: center;
+}
+
+/* ---------- Gallery page ---------- */
+
+.gallery-page {
+  flex: 1;
+  padding: 36px 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.gallery-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery-header h2 {
+  font-size: 1.7rem;
+}
+
+.gallery-header p {
+  color: var(--text-soft);
+  margin-top: 6px;
+  font-size: 0.92rem;
+}
+
+/* ---------- Add photo form ---------- */
+
+.add-photo-form {
+  background: var(--wall-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 22px 24px;
+  margin-bottom: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.add-photo-form .field {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 180px;
+}
+
+.add-photo-form label {
+  color: var(--text-soft);
+}
+
+.add-photo-form input[type="text"] {
+  background: var(--wall);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--mat);
+}
+
+.file-input {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+.add-photo-form .btn {
+  flex-shrink: 0;
+}
+
+/* ---------- Photo grid ---------- */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 26px;
+}
+
+.photo-card {
+  background: var(--mat);
+  padding: 14px 14px 16px;
+  border-radius: 2px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+}
+
+.photo-card .frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--mat-dim);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.photo-title {
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 70px 20px;
+  color: var(--text-soft);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.empty-state h3 {
+  color: var(--mat);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .navbar, .gallery-page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
