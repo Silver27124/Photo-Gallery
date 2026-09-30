@@ -6,7 +6,7 @@ function PhotoCard({ photo, onRemove }) {
       </div>
       <div className="photo-card-footer">
         <span className="photo-title">{photo.title}</span>
-        <button className="btn-danger" onClick={() => onRemove(photo.id)}>
+        <button className="btn-danger" onClick={() => onRemove(photo._id || photo.id)}>
           Remove
         </button>
       </div>

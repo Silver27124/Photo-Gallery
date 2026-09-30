@@ -4,6 +4,7 @@ function AddPhotoForm({ onAddPhoto }) {
   const [title, setTitle] = useState('')
   const [file, setFile] = useState(null)
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   function handleFileChange(e) {
     setFile(e.target.files[0] || null)
@@ -17,20 +18,30 @@ function AddPhotoForm({ onAddPhoto }) {
       return
     }
 
-    // FileReader turns the chosen image into a base64 "data URL"
-    // string, which we can store in localStorage and use directly
-    // as an <img src="..."> value.
+    setIsSubmitting(true)
+    setError('')
+
     const reader = new FileReader()
-    reader.onload = () => {
-      onAddPhoto({
-        id: Date.now(),
-        title: title.trim() || 'Untitled',
-        url: reader.result,
-      })
-      setTitle('')
-      setFile(null)
-      e.target.reset()
-      setError('')
+    reader.onerror = () => {
+      setError('Could not read image file.')
+      setIsSubmitting(false)
+    }
+
+    reader.onload = async () => {
+      try {
+        await onAddPhoto({
+          title: title.trim() || 'Untitled',
+          url: reader.result,
+        })
+        setTitle('')
+        setFile(null)
+        e.target.reset()
+        setError('')
+      } catch (err) {
+        setError(err.message || 'Failed to add photo.')
+      } finally {
+        setIsSubmitting(false)
+      }
     }
     reader.readAsDataURL(file)
   }
@@ -45,6 +56,7 @@ function AddPhotoForm({ onAddPhoto }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Give your photo a name"
+          disabled={isSubmitting}
         />
       </div>
 
@@ -56,11 +68,12 @@ function AddPhotoForm({ onAddPhoto }) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
+          disabled={isSubmitting}
         />
       </div>
 
-      <button type="submit" className="btn btn-brass">
-        Add photo
+      <button type="submit" className="btn btn-brass" disabled={isSubmitting}>
+        {isSubmitting ? 'Saving...' : 'Add photo'}
       </button>
 
       {error && <div className="login-error">{error}</div>}
